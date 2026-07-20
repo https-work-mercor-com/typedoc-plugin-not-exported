@@ -1,12 +1,18 @@
 # typedoc-plugin-not-exported
 
-[![npm package](https://img.shields.io/badge/npm%20i%20--D-typedoc--plugin--not--exported-brightgreen)](https://www.npmjs.com/package/typedoc-plugin-not-exported) [![version number](https://img.shields.io/npm/v/typedoc-plugin-not-exported?color=green&label=version)](https://github.com/tomchen/typedoc-plugin-not-exported/releases) [![Actions Status](https://github.com/tomchen/typedoc-plugin-not-exported/workflows/Test/badge.svg)](https://github.com/tomchen/typedoc-plugin-not-exported/actions) [![License](https://img.shields.io/github/license/tomchen/typedoc-plugin-not-exported)](https://github.com/tomchen/typedoc-plugin-not-exported/blob/main/LICENSE)
+[![npm package](https://img.shields.io/badge/npm%20i%20--D-typedoc--plugin--not--exported-brightgreen)](https://www.npmjs.com/package/typedoc-plugin-not-exported) [![version number](https://img.shields.io/npm/v/typedoc-plugin-not-exported?color=blue)](https://www.npmjs.com/package/typedoc-plugin-not-exported) [![License: CC0](https://img.shields.io/badge/License-CC0-blue.svg)](LICENSE)
 
 This [TypeDoc](https://typedoc.org/) plugin can force inclusion of specific symbols (variables) that are not exported, by making them fake exports.
 
+## 💰 Support This Project
+
+This plugin is maintained by open source contributors. If you find it useful, please consider supporting the project:
+
+**[💙 Become a Sponsor](https://github.com/sponsors/protactiniumplatinumhyssop-cell)** – Help us continue maintaining and improving this plugin!
+
 ## Usage
 
-(Assuming you have already installed TypeDoc (`npm i -D typedoc`) of [version](https://www.npmjs.com/package/typedoc?activeTab=versions) **equal to or greater than v0.20.16** (released on 2021-01-17, this is the minimum required by this plugin. If you need to update the version, change TypeDoc's version number in package.json and rerun `npm i` / `yarn`))
+(Assuming you have already installed TypeDoc (`npm i -D typedoc`) of [version](https://www.npmjs.com/package/typedoc?activeTab=versions) **equal to or greater than v0.20.16**)
 
 Install the plugin with [npm](https://www.npmjs.com/):
 
@@ -20,7 +26,7 @@ Or with [yarn](https://yarnpkg.com/):
 yarn add -D typedoc-plugin-not-exported
 ```
 
-In your code, tag the symbols (i.e. variables / types / interfaces / classes / object properties / class members etc.) that are not exported but you still want to include in the generated documentation.
+In your code, tag the symbols (i.e. variables / types / interfaces / classes / object properties / class members etc.) that are not exported but you still want to include in the generated documentation with a special JSDoc tag (default: `@notExported`).
 
 The default tag is `@notExported`.
 
@@ -69,6 +75,10 @@ Or, if you are using `@internalDoNotUse` tag instead of `@notExported`, run:
 typedoc --includeTag internalDoNotUse src/index.ts
 ```
 
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
+
 ## Links, Tips & Others
 
 Originally from [here](https://github.com/TypeStrong/typedoc/issues/1474#issuecomment-766178261).
@@ -79,7 +89,7 @@ TypeDoc converts comments in TypeScript source code into rendered HTML documenta
 
 TypeDoc loads all plugins by default, if you want to specify plugins to load, use [`--plugin`](https://typedoc.org/guides/options/#plugin) flag.
 
-Those non-exported symbols (variables) you want to include in the doc, are not public and the [`@public`](https://tsdoc.org/pages/tags/public/) tag shouldn't be applied. TypeDoc's `@internal` tag and [typedoc-plugin-internal-external](https://github.com/christopherthielen/typedoc-plugin-internal-external)'s `@internal` and `@external` are not made to solve the problem in question.
+Those non-exported symbols (variables) you want to include in the doc, are not public and the [`@public`](https://tsdoc.org/pages/tags/public/) tag shouldn't be applied. TypeDoc's `@internal` tag marks a symbol to not be exported, so the `@notExported` tag is just a workaround.
 
 Nevertheless, if you want to include a symbol (variable) in the documentation, you should usually export it.
 
